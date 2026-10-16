@@ -1,0 +1,10 @@
+# booking-reminder (HTML, sent by FluentBooking on the Settings reminder days, copied into each session on publish); FluentBooking fills its own codes.
+Subject: A quick reminder about your photo session, {{guest.first_name}}!
+<p>Hi {{guest.first_name}}!</p>
+<p>Just a friendly reminder: we're looking forward to seeing you!</p>
+<p><strong>When:</strong> {{booking.full_start_end_guest_timezone}}</p>
+<p><strong>Where:</strong></p>
+<div>{{booking.location_details_html}}</div>
+<p>Please bring your child's costume if they're wearing one.</p>
+<p>If that time doesn't work anymore, no problem: <a href="##booking.reschedule_url##">pick a new time</a> or <a href="##booking.cancelation_url##">cancel your booking</a>. If you have any questions, just reply to this email.</p>
+<p>Thank you!<br>Matt<br>So Many Angels</p>

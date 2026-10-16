@@ -1,0 +1,1003 @@
+/* SMA Events design tokens and components, all scoped under .sma (restyle via the token block; see docs/design/brand.md). */
+
+/* ------------------------------------------------------------------ tokens */
+
+.sma {
+  /* Brand colours (live Elementor kit 4932 and Solace palette) */
+  --sma-color-amber: #F5A706;          /* --e-global-color-primary */
+  --sma-color-brown: #9D5A18;          /* --e-global-color-secondary */
+  --sma-color-burnt: #B5510A;          /* solcolorbuttonhover / linkbuttonhover */
+  --sma-color-ink: #271D16;            /* solcolorheading */
+  --sma-color-text: #000000;           /* --e-global-color-text */
+  --sma-color-muted: #6B6266;          /* --e-global-color-7d03fda */
+  --sma-color-silver: #D3CACC;         /* --e-global-color-307a77b, decorative only */
+  --sma-color-cream: #FAF9F8;          /* solcolorbackground */
+  --sma-color-white: #FFFFFF;          /* --e-global-color-accent */
+  --sma-color-line: #EAE3DF;           /* solcolorborder, decorative only */
+  --sma-color-line-strong: #8A8084;    /* form control borders, 3.82:1 on white */
+  --sma-color-amber-tint: #FFF4DB;
+
+  /* Roles */
+  --sma-bg: var(--sma-color-cream);
+  --sma-surface: var(--sma-color-white);
+  --sma-fg: var(--sma-color-text);
+  --sma-fg-heading: var(--sma-color-ink);
+  --sma-fg-muted: var(--sma-color-muted);
+  --sma-fg-accent: var(--sma-color-brown);
+  --sma-link: var(--sma-color-burnt);
+  --sma-link-hover: var(--sma-color-ink);
+  --sma-border: var(--sma-color-line);
+  --sma-border-control: var(--sma-color-line-strong);
+  --sma-focus: var(--sma-color-ink);
+  --sma-error: #A12A1C;
+  --sma-error-bg: #FDE8E6;
+  --sma-success: #1E6B34;
+  --sma-success-bg: #E6F4EA;
+
+  /* Buttons */
+  --sma-btn-primary-bg: var(--sma-color-amber);
+  --sma-btn-primary-fg: var(--sma-color-ink);
+  --sma-btn-primary-bg-hover: var(--sma-color-burnt);
+  --sma-btn-primary-fg-hover: var(--sma-color-white);
+  --sma-btn-secondary-bg: transparent;
+  --sma-btn-secondary-fg: var(--sma-color-brown);
+  --sma-btn-secondary-border: var(--sma-color-brown);
+  --sma-btn-secondary-bg-hover: var(--sma-color-brown);
+  --sma-btn-secondary-fg-hover: var(--sma-color-white);
+
+  /* Status badges: fg/bg pairs, all >= 5.7:1 */
+  --sma-badge-awaiting-fg: #7A4A0F;
+  --sma-badge-awaiting-bg: var(--sma-color-amber-tint);
+  --sma-badge-approved-fg: var(--sma-success);
+  --sma-badge-approved-bg: var(--sma-success-bg);
+  --sma-badge-booked-fg: #1D4F86;
+  --sma-badge-booked-bg: #E5F0FB;
+  --sma-badge-attended-fg: #6E3F11;
+  --sma-badge-attended-bg: #F3E9DF;
+  --sma-badge-canceled-fg: #4D4649;
+  --sma-badge-canceled-bg: #EFEDEE;
+  --sma-badge-followup-fg: var(--sma-error);
+  --sma-badge-followup-bg: var(--sma-error-bg);
+
+  /* Type */
+  --sma-font-body: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sma-font-heading: "Outfit", "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --sma-fw-body: 500;
+  --sma-fw-heading: 500;
+  --sma-fw-strong: 600;
+  --sma-lh-body: 1.5;
+  --sma-lh-h1: 1;
+  --sma-lh-h2: 1.1;
+  --sma-lh-h3: 1.2;
+  --sma-lh-h4: 1.3;
+  --sma-fs-body: 1rem;        /* 16px */
+  --sma-fs-small: 0.8125rem;  /* 13px */
+  --sma-fs-label: 0.8125rem;  /* 13px uppercase eyebrow, letter-spaced */
+  --sma-ls-label: 1.5px;
+  /* Mobile sizes (live kit <= 767px); widened in the media queries below */
+  --sma-fs-h1: 2.375rem;      /* 38px */
+  --sma-fs-h2: 1.75rem;       /* 28px */
+  --sma-fs-h3: 1.3125rem;     /* 21px */
+  --sma-fs-h4: 1.125rem;      /* 18px */
+
+  /* Space, shape, depth, motion */
+  --sma-space-1: 0.25rem;
+  --sma-space-2: 0.5rem;
+  --sma-space-3: 0.75rem;
+  --sma-space-4: 1rem;
+  --sma-space-5: 1.5rem;      /* 24px: the kit's widget spacing */
+  --sma-space-6: 2rem;
+  --sma-space-7: 3rem;
+  --sma-container: 75rem;     /* 1200px, kit container width */
+  --sma-radius-pill: 100px;   /* live buttons */
+  --sma-radius-card: 12px;
+  --sma-radius-control: 8px;
+  --sma-border-width: 1px;
+  --sma-shadow-card: 0 0 24px rgba(0, 0, 0, 0.08);
+  --sma-shadow-card-hover: 0 0 27px rgba(0, 0, 0, 0.14);
+  --sma-focus-ring: 3px solid var(--sma-focus);
+  --sma-focus-offset: 2px;
+  --sma-tap-min: 44px;
+  --sma-transition: 150ms ease-in-out;
+
+  /* Base */
+  color: var(--sma-fg);
+  font-family: var(--sma-font-body);
+  font-size: var(--sma-fs-body);
+  font-weight: var(--sma-fw-body);
+  line-height: var(--sma-lh-body);
+}
+
+@media (min-width: 768px) {
+  .sma {
+    --sma-fs-h1: 3.125rem;    /* 50px */
+    --sma-fs-h2: 2.375rem;    /* 38px */
+    --sma-fs-h3: 1.75rem;     /* 28px */
+    --sma-fs-h4: 1.3125rem;   /* 21px */
+  }
+}
+
+@media (min-width: 1025px) {
+  .sma {
+    --sma-fs-h1: 4.25rem;     /* 68px */
+    --sma-fs-h2: 3.125rem;    /* 50px */
+    --sma-fs-h3: 2.375rem;    /* 38px */
+    --sma-fs-h4: 1.75rem;     /* 28px */
+  }
+}
+
+/* ------------------------------------------------------------- base type */
+
+.sma *,
+.sma *::before,
+.sma *::after {
+  box-sizing: border-box;
+}
+
+.sma h1,
+.sma h2,
+.sma h3,
+.sma h4 {
+  margin: 0 0 var(--sma-space-4);
+  color: var(--sma-fg-heading);
+  font-family: var(--sma-font-heading);
+  font-weight: var(--sma-fw-heading);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.sma h1 { font-size: var(--sma-fs-h1); line-height: var(--sma-lh-h1); }
+.sma h2 { font-size: var(--sma-fs-h2); line-height: var(--sma-lh-h2); }
+.sma h3 { font-size: var(--sma-fs-h3); line-height: var(--sma-lh-h3); }
+.sma h4 { font-size: var(--sma-fs-h4); line-height: var(--sma-lh-h4); }
+
+.sma p {
+  margin: 0 0 var(--sma-space-4);
+}
+
+.sma a {
+  color: var(--sma-link);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.sma a:hover {
+  color: var(--sma-link-hover);
+}
+
+.sma :focus-visible {
+  outline: var(--sma-focus-ring);
+  outline-offset: var(--sma-focus-offset);
+}
+
+.sma .sma-eyebrow {
+  display: block;
+  margin-bottom: var(--sma-space-2);
+  color: var(--sma-fg-accent);
+  font-size: var(--sma-fs-label);
+  font-weight: var(--sma-fw-body);
+  letter-spacing: var(--sma-ls-label);
+  text-transform: uppercase;
+}
+
+.sma .sma-muted {
+  color: var(--sma-fg-muted);
+}
+
+.sma.sma-page {
+  padding-block: var(--sma-space-7);
+  background: var(--sma-bg);
+}
+
+.sma .sma-container {
+  width: 100%;
+  max-width: var(--sma-container);
+  margin-inline: auto;
+  padding-inline: var(--sma-space-4);
+}
+
+/* --------------------------------------------------------------- buttons */
+
+.sma .sma-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sma-space-2);
+  min-height: var(--sma-tap-min);
+  padding: var(--sma-space-3) var(--sma-space-5);
+  border: 2px solid transparent;
+  border-radius: var(--sma-radius-pill);
+  font-family: var(--sma-font-body);
+  font-size: var(--sma-fs-body);
+  font-weight: var(--sma-fw-strong);
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color var(--sma-transition), color var(--sma-transition), border-color var(--sma-transition);
+}
+
+.sma .sma-btn--primary {
+  background-color: var(--sma-btn-primary-bg);
+  border-color: var(--sma-btn-primary-bg);
+  color: var(--sma-btn-primary-fg);
+}
+
+.sma .sma-btn--primary:hover {
+  background-color: var(--sma-btn-primary-bg-hover);
+  border-color: var(--sma-btn-primary-bg-hover);
+  color: var(--sma-btn-primary-fg-hover);
+}
+
+.sma .sma-btn--secondary {
+  background-color: var(--sma-btn-secondary-bg);
+  border-color: var(--sma-btn-secondary-border);
+  color: var(--sma-btn-secondary-fg);
+}
+
+.sma .sma-btn--secondary:hover {
+  background-color: var(--sma-btn-secondary-bg-hover);
+  border-color: var(--sma-btn-secondary-bg-hover);
+  color: var(--sma-btn-secondary-fg-hover);
+}
+
+.sma .sma-btn:focus-visible {
+  outline: var(--sma-focus-ring);
+  outline-offset: var(--sma-focus-offset);
+}
+
+.sma .sma-btn--block {
+  display: flex;
+  width: 100%;
+}
+
+.sma .sma-btn[disabled],
+.sma .sma-btn[aria-disabled="true"] {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+/* ----------------------------------------------------------------- cards */
+
+.sma .sma-card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--sma-surface);
+  border: var(--sma-border-width) solid var(--sma-border);
+  border-radius: var(--sma-radius-card);
+  box-shadow: var(--sma-shadow-card);
+  transition: box-shadow var(--sma-transition);
+}
+
+.sma .sma-card:hover {
+  box-shadow: var(--sma-shadow-card-hover);
+}
+
+.sma .sma-card__media {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--sma-color-amber-tint);
+}
+
+.sma .sma-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: var(--sma-space-3);
+  padding: var(--sma-space-5);
+}
+
+.sma .sma-card__title {
+  margin: 0;
+  font-size: var(--sma-fs-h4);
+  line-height: var(--sma-lh-h4);
+}
+
+.sma .sma-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sma-space-3);
+  margin-top: auto;
+  padding-top: var(--sma-space-3);
+}
+
+/* ------------------------------------------------------------------ grid */
+
+.sma .sma-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr));
+  gap: var(--sma-space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* ------------------------------------------------------------ event meta */
+
+.sma .sma-event-meta {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sma-space-1) var(--sma-space-4);
+  margin: 0 0 var(--sma-space-5);
+}
+
+.sma .sma-event-meta dt {
+  color: var(--sma-fg-accent);
+  font-size: var(--sma-fs-label);
+  font-weight: var(--sma-fw-strong);
+  letter-spacing: var(--sma-ls-label);
+  text-transform: uppercase;
+}
+
+.sma .sma-event-meta dd {
+  margin: 0 0 var(--sma-space-3);
+}
+
+@media (min-width: 480px) {
+  .sma .sma-event-meta {
+    grid-template-columns: max-content 1fr;
+    align-items: baseline;
+  }
+
+  .sma .sma-event-meta dd {
+    margin-bottom: 0;
+  }
+}
+
+/* ---------------------------------------------------------------- badges */
+
+.sma .sma-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem var(--sma-space-3);
+  border: var(--sma-border-width) solid transparent; /* shows in forced-colors mode */
+  border-radius: var(--sma-radius-pill);
+  font-size: var(--sma-fs-small);
+  font-weight: var(--sma-fw-strong);
+  line-height: 1.5;
+  white-space: nowrap;
+  background: var(--sma-badge-canceled-bg);
+  color: var(--sma-badge-canceled-fg);
+}
+
+.sma .sma-badge--awaiting-approval,
+.sma .sma-badge--volunteer-applied {
+  background: var(--sma-badge-awaiting-bg);
+  color: var(--sma-badge-awaiting-fg);
+}
+
+.sma .sma-badge--approved,
+.sma .sma-badge--volunteer-approved {
+  background: var(--sma-badge-approved-bg);
+  color: var(--sma-badge-approved-fg);
+}
+
+.sma .sma-badge--booked {
+  background: var(--sma-badge-booked-bg);
+  color: var(--sma-badge-booked-fg);
+}
+
+.sma .sma-badge--attended {
+  background: var(--sma-badge-attended-bg);
+  color: var(--sma-badge-attended-fg);
+}
+
+.sma .sma-badge--canceled,
+.sma .sma-badge--volunteer-declined {
+  background: var(--sma-badge-canceled-bg);
+  color: var(--sma-badge-canceled-fg);
+}
+
+.sma .sma-badge--needs-follow-up {
+  background: var(--sma-badge-followup-bg);
+  color: var(--sma-badge-followup-fg);
+}
+
+/* ----------------------------------------------------------------- table */
+/* Mobile first: each row is a stacked block; every <td> needs data-label="Column". */
+
+.sma .sma-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--sma-fs-body);
+}
+
+.sma .sma-table caption {
+  margin-bottom: var(--sma-space-3);
+  color: var(--sma-fg-heading);
+  font-weight: var(--sma-fw-strong);
+  text-align: left;
+}
+
+.sma .sma-table thead {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.sma .sma-table tr {
+  display: block;
+  margin-bottom: var(--sma-space-4);
+  padding: var(--sma-space-3) var(--sma-space-4);
+  background: var(--sma-surface);
+  border: var(--sma-border-width) solid var(--sma-border);
+  border-radius: var(--sma-radius-control);
+}
+
+.sma .sma-table td {
+  display: grid;
+  grid-template-columns: minmax(7rem, 40%) 1fr;
+  gap: var(--sma-space-3);
+  padding: var(--sma-space-2) 0;
+  border-bottom: var(--sma-border-width) solid var(--sma-border);
+  overflow-wrap: anywhere;
+}
+
+.sma .sma-table td:last-child {
+  border-bottom: 0;
+}
+
+.sma .sma-table td::before {
+  content: attr(data-label);
+  color: var(--sma-fg-muted);
+  font-size: var(--sma-fs-small);
+  font-weight: var(--sma-fw-strong);
+}
+
+@media (min-width: 768px) {
+  .sma .sma-table thead {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .sma .sma-table tr {
+    display: table-row;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+  }
+
+  .sma .sma-table th,
+  .sma .sma-table td {
+    display: table-cell;
+    padding: var(--sma-space-3) var(--sma-space-4);
+    border-bottom: var(--sma-border-width) solid var(--sma-border);
+    text-align: left;
+    vertical-align: top;
+    /* Words stay whole on wide screens; only email addresses may break. */
+    overflow-wrap: break-word;
+  }
+
+  .sma .sma-table td a[href^="mailto:"] {
+    overflow-wrap: anywhere;
+  }
+
+  .sma .sma-table td:last-child {
+    border-bottom: var(--sma-border-width) solid var(--sma-border);
+  }
+
+  .sma .sma-table th {
+    color: var(--sma-fg-heading);
+    font-size: var(--sma-fs-small);
+    font-weight: var(--sma-fw-strong);
+    letter-spacing: var(--sma-ls-label);
+    text-transform: uppercase;
+  }
+
+  .sma .sma-table tbody tr {
+    background: var(--sma-surface);
+  }
+
+  .sma .sma-table td::before {
+    content: none;
+  }
+}
+
+/* --------------------------------------------- embedded Fluent Forms form (class names from Fluent Forms 6.2.5) */
+
+.sma .fluentform {
+  --fluentform-primary: var(--sma-color-burnt);
+  --fluentform-secondary: var(--sma-fg);
+  --fluentform-danger: var(--sma-error);
+  --fluentform-border-color: var(--sma-border-control);
+  --fluentform-border-radius: var(--sma-radius-control);
+  font-family: var(--sma-font-body);
+}
+
+.sma .fluentform .ff-el-group {
+  margin-bottom: var(--sma-space-5);
+}
+
+.sma .fluentform .ff-el-input--label label {
+  color: var(--sma-fg-heading);
+  font-family: var(--sma-font-body);
+  font-size: var(--sma-fs-body);
+  font-weight: var(--sma-fw-strong);
+}
+
+.sma .fluentform .ff-el-input--label {
+  margin-bottom: var(--sma-space-2);
+}
+
+.sma .fluentform .ff-el-form-control {
+  width: 100%;
+  min-height: var(--sma-tap-min);
+  padding: var(--sma-space-3) var(--sma-space-4);
+  background: var(--sma-surface);
+  border: var(--sma-border-width) solid var(--sma-border-control);
+  border-radius: var(--sma-radius-control);
+  color: var(--sma-fg);
+  font-family: var(--sma-font-body);
+  font-size: var(--sma-fs-body);
+  line-height: var(--sma-lh-body);
+}
+
+.sma .fluentform .ff-el-form-control:focus,
+.sma .fluentform .ff-el-form-control:focus-visible {
+  border-color: var(--sma-focus);
+  outline: var(--sma-focus-ring);
+  outline-offset: var(--sma-focus-offset);
+}
+
+.sma .fluentform .ff-el-form-check {
+  margin-bottom: var(--sma-space-2);
+}
+
+.sma .fluentform .ff-el-form-check input:focus-visible {
+  outline: var(--sma-focus-ring);
+  outline-offset: var(--sma-focus-offset);
+}
+
+.sma .fluentform .ff-el-help-message {
+  margin-top: var(--sma-space-1);
+  color: var(--sma-fg-muted);
+  font-size: var(--sma-fs-small);
+}
+
+.sma .fluentform .ff-el-input--label.ff-el-is-required.asterisk-right label::after,
+.sma .fluentform .ff-el-input--label.ff-el-is-required.asterisk-left label::before {
+  color: var(--sma-error);
+}
+
+.sma .fluentform .ff-el-is-error .ff-el-form-control {
+  border-color: var(--sma-error);
+}
+
+.sma .fluentform .ff-el-is-error .text-danger,
+.sma .fluentform .ff-errors-in-stack .error {
+  color: var(--sma-error);
+  font-size: var(--sma-fs-small);
+  font-weight: var(--sma-fw-strong);
+}
+
+.sma .fluentform form .ff-btn-submit:not(.ff_btn_no_style),
+.sma .fluentform form .ff-btn-submit.wpf_has_custom_css {
+  min-height: var(--sma-tap-min);
+  padding: var(--sma-space-3) var(--sma-space-6);
+  background-color: var(--sma-btn-primary-bg);
+  border: 2px solid var(--sma-btn-primary-bg);
+  border-radius: var(--sma-radius-pill);
+  color: var(--sma-btn-primary-fg);
+  font-family: var(--sma-font-body);
+  font-size: var(--sma-fs-body);
+  font-weight: var(--sma-fw-strong);
+  opacity: 1;
+  transition: background-color var(--sma-transition), color var(--sma-transition);
+}
+
+.sma .fluentform form .ff-btn-submit:not(.ff_btn_no_style):hover,
+.sma .fluentform form .ff-btn-submit.wpf_has_custom_css:hover {
+  background-color: var(--sma-btn-primary-bg-hover);
+  border-color: var(--sma-btn-primary-bg-hover);
+  color: var(--sma-btn-primary-fg-hover);
+  opacity: 1;
+}
+
+.sma .fluentform form .ff-btn-submit:focus-visible {
+  outline: var(--sma-focus-ring);
+  outline-offset: var(--sma-focus-offset);
+}
+
+.sma .ff-message-success {
+  padding: var(--sma-space-4) var(--sma-space-5);
+  background: var(--sma-success-bg);
+  border: var(--sma-border-width) solid var(--sma-success);
+  border-radius: var(--sma-radius-control);
+  box-shadow: none;
+  color: var(--sma-fg);
+}
+
+/* ------------------------------------------------------------- utilities */
+
+.sma .sma-visually-hidden,
+.sma .sma-visually-hidden-focusable:not(:focus):not(:focus-within) {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}
+
+.sma .sma-stack > * + * {
+  margin-top: var(--sma-space-4);
+}
+
+/* ---------------------------------------------------------- preferences */
+
+@media (prefers-reduced-motion: reduce) {
+  .sma *,
+  .sma *::before,
+  .sma *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (forced-colors: active) {
+  .sma .sma-btn,
+  .sma .sma-badge {
+    border-color: CanvasText;
+  }
+}
+
+/* ================================================================ WP5 admin */
+/* Admin dashboard (includes/dashboard.php, admin/*.php). Reads tokens only; no new tokens. */
+
+.sma.sma-admin {
+  font-family: var(--sma-font-body);
+  color: var(--sma-fg);
+}
+
+.sma.sma-admin h1.sma-admin__title {
+  font-size: var(--sma-fs-h2);
+  line-height: var(--sma-lh-h2);
+  margin-bottom: var(--sma-space-4);
+}
+
+.sma .sma-admin__heading {
+  margin: 0;
+  font-size: var(--sma-fs-h3);
+  line-height: var(--sma-lh-h3);
+}
+
+.sma .sma-admin__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sma-space-3);
+  margin: var(--sma-space-5) 0 var(--sma-space-4);
+}
+
+.sma .sma-admin__toolbar .sma-admin__heading {
+  margin-right: auto;
+}
+
+.sma .sma-admin__toolbar .sma-btn,
+.sma .sma-admin__actions .sma-btn {
+  min-height: 2.25rem;
+  padding: var(--sma-space-1) var(--sma-space-4);
+  font-size: var(--sma-fs-small);
+}
+
+.sma .sma-admin__tabs {
+  margin-bottom: var(--sma-space-4);
+}
+
+.sma .sma-admin__badges,
+.sma .sma-admin__filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sma-space-2);
+}
+
+.sma .sma-admin__filters {
+  margin-bottom: var(--sma-space-4);
+}
+
+.sma .sma-admin__badges a,
+.sma .sma-admin__filters a {
+  text-decoration: none;
+}
+
+.sma .sma-admin__filters a.is-current .sma-badge,
+.sma .sma-admin__filters a.is-current {
+  outline: 2px solid var(--sma-focus);
+  outline-offset: 1px;
+  border-radius: var(--sma-radius-pill);
+}
+
+/* Zero counts: same colours (contrast kept), lighter weight and a dashed edge. */
+.sma .sma-badge.sma-badge--zero {
+  font-weight: var(--sma-fw-body);
+  border-style: dashed;
+  border-color: var(--sma-border-control);
+}
+
+.sma .sma-admin__links {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.sma .sma-admin__past td {
+  color: var(--sma-fg-muted);
+}
+
+.sma .sma-admin__actions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sma-space-2);
+}
+
+.sma .sma-admin__form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sma-space-2);
+  margin: 0;
+}
+
+.sma .sma-admin__reason {
+  min-width: 10rem;
+  border: var(--sma-border-width) solid var(--sma-border-control);
+  border-radius: var(--sma-radius-control);
+}
+
+.sma .sma-admin__flag {
+  font-size: var(--sma-fs-small);
+  font-weight: var(--sma-fw-strong);
+  color: var(--sma-error);
+}
+
+.sma .sma-admin__group {
+  margin-bottom: var(--sma-space-6);
+}
+
+/* ===================================== public event pages ===================================== */
+
+.sma .sma-event__hero {
+  margin-bottom: var(--sma-space-6);
+}
+
+.sma .sma-event__hero h1 {
+  margin-bottom: var(--sma-space-4);
+  overflow-wrap: anywhere;
+}
+
+.sma .sma-event__lead {
+  max-width: 40rem;
+  font-size: var(--sma-fs-h4);
+  line-height: var(--sma-lh-h4);
+}
+
+.sma .sma-event__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sma-space-6);
+}
+
+.sma .sma-event__main > * + * {
+  margin-top: var(--sma-space-5);
+}
+
+.sma .sma-event__aside > * + * {
+  margin-top: var(--sma-space-4);
+}
+
+.sma .sma-panel {
+  padding: var(--sma-space-5);
+  background: var(--sma-surface);
+  border: var(--sma-border-width) solid var(--sma-border);
+  border-radius: var(--sma-radius-card);
+}
+
+.sma .sma-panel > :last-child {
+  margin-bottom: 0;
+}
+
+.sma .sma-panel h2 {
+  font-size: var(--sma-fs-h3);
+  line-height: var(--sma-lh-h3);
+}
+
+.sma .sma-panel h3 {
+  margin-top: var(--sma-space-5);
+  font-size: var(--sma-fs-h4);
+  line-height: var(--sma-lh-h4);
+}
+
+.sma .sma-event-address {
+  display: block;
+}
+
+.sma .sma-map-link {
+  display: inline-block;
+  min-height: var(--sma-tap-min);
+  padding-block: var(--sma-space-2);
+}
+
+.sma .sma-event-meta--compact {
+  margin-bottom: 0;
+}
+
+.sma .sma-event-list .sma-card {
+  height: 100%;
+}
+
+.sma .sma-card__title a {
+  color: var(--sma-fg-heading);
+  text-decoration: none;
+}
+
+.sma .sma-card__title a:hover {
+  color: var(--sma-link);
+  text-decoration: underline;
+}
+
+.sma .sma-events-sponsor {
+  max-width: 40rem;
+  margin-top: var(--sma-space-6);
+}
+
+.sma .sma-sponsor .sma-card__title {
+  font-size: var(--sma-fs-h4);
+}
+
+.sma .sma-event--passed .sma-event__hero {
+  margin-bottom: 0;
+}
+
+@media (min-width: 1025px) {
+  .sma .sma-event__layout {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .sma .sma-event__aside {
+    position: sticky;
+    top: var(--sma-space-6);
+  }
+}
+
+/* ===================================== dashboard: the "no event" group ===================================== */
+
+.sma .sma-admin__no-event-row td {
+  border-top: var(--sma-border-width) dashed var(--sma-border);
+}
+
+.sma .sma-admin__no-event {
+  font-size: var(--sma-fs-small);
+}
+
+.sma .sma-admin__no-event-note {
+  max-width: 48rem;
+}
+
+/* --------------------- the [sma_events] list inside a site page (the theme supplies width and padding) --------------------- */
+
+.sma.sma-events-embed {
+  margin-block: var(--sma-space-5);
+}
+
+.sma .sma-events-embed__heading {
+  margin-bottom: var(--sma-space-5);
+}
+
+/* --------------------- email previews and the decline draft on a family's row --------------------- */
+
+.sma .sma-admin__preview {
+  max-width: 48rem;
+}
+
+.sma .sma-admin__preview > * + * {
+  margin-top: var(--sma-space-4);
+}
+
+.sma .sma-admin__preview-who {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: var(--sma-space-1) var(--sma-space-4);
+  margin: var(--sma-space-4) 0 0;
+}
+
+.sma .sma-admin__preview-who dt {
+  font-weight: var(--sma-fw-strong);
+}
+
+.sma .sma-admin__preview-who dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.sma .sma-admin__preview-mail {
+  padding: var(--sma-space-4);
+  background: var(--sma-surface);
+  border: var(--sma-border-width) solid var(--sma-border);
+  border-radius: var(--sma-radius-card);
+}
+
+.sma .sma-admin__preview-mail--draft {
+  border-style: dashed;
+}
+
+.sma .sma-admin__preview-mail h3 {
+  margin-top: 0;
+  font-size: var(--sma-fs-h4);
+  line-height: var(--sma-lh-h4);
+}
+
+.sma .sma-admin__draft-body {
+  margin: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: inherit;
+}
+
+.sma .sma-admin__preview-form {
+  margin-top: var(--sma-space-5);
+}
+
+.sma .sma-admin__preview-form label {
+  flex-basis: 100%;
+}
+
+.sma .sma-admin__thanked {
+  font-size: var(--sma-fs-small);
+}
+
+/* Approval nudge (overview and event view), "Mark attended", canvas status, Follow-ups lists. */
+.sma .sma-admin__nudge {
+  display: inline-block;
+  margin-top: var(--sma-space-2);
+  font-size: var(--sma-fs-small);
+  font-weight: var(--sma-fw-strong);
+  color: var(--sma-error);
+}
+
+.sma .sma-admin__bulk {
+  margin-bottom: var(--sma-space-4);
+}
+
+.sma .sma-admin__bulk-pick {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sma-space-1);
+  margin-top: var(--sma-space-1);
+  font-size: var(--sma-fs-small);
+}
+
+.sma .sma-admin__canvas {
+  display: inline-block;
+  margin: var(--sma-space-1) 0;
+  font-size: var(--sma-fs-small);
+}
+
+.sma .sma-admin__form--canvas .button {
+  font-size: var(--sma-fs-small);
+}
+
+.sma .sma-admin__subnav {
+  margin-bottom: var(--sma-space-4);
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "So Many Angels local copy (saved site)",
+    "author": "AIAH 2026 team",
+    "description": "Starts a site that was already set up and seeded (site/.snapshot/). No steps: the plugins, theme and settings are already in its database, and re-running blueprint.json would reset the site title the seed set."
+  },
+  "preferredVersions": {
+    "php": "7.4",
+    "wp": "latest"
+  },
+  "login": false,
+  "steps": []
+}

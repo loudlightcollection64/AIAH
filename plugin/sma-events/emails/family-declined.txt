@@ -1,0 +1,17 @@
+# family-declined (draft only, shown on the dashboard, never sent): guardian_first_name, child_first_name, city, date_label.
+Subject: About your So Many Angels sign-up
+
+Hi {{guardian_first_name}}!
+
+Thank you so much for signing up {{child_first_name}} for a So Many Angels session.
+This was for our {{city}} event on {{date_label}}.
+
+I'm sorry, but we aren't able to offer you a session at this event.
+
+[Matt: add a sentence here in your own words if you want to say why.]
+
+We'd love to stay in touch about future events, and if you have any questions at all, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels

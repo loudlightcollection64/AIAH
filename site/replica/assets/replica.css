@@ -1,0 +1,225 @@
+/* Approximates Elementor Pro's nav menu, sticky header and form styles, plus media placeholders, for the replica pages. */
+
+/* ---- body font: the theme's customizer sets DM Sans on the live site */
+body.sma-replica,
+body.sma-replica .elementor-kit-4932 {
+  font-family: "DM Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* ---- nav menu (desktop) */
+.elementor-nav-menu--main .elementor-nav-menu,
+.elementor-nav-menu--dropdown .elementor-nav-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.elementor-nav-menu li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.elementor-nav-menu li::marker,
+.elementor-nav-menu li::before {
+  content: none;
+}
+.elementor-nav-menu--layout-horizontal .elementor-nav-menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.elementor-nav-menu__align-center .elementor-nav-menu--main .elementor-nav-menu {
+  justify-content: center;
+}
+.elementor-nav-menu--main .elementor-nav-menu > li {
+  margin: 0 var(--e-nav-menu-horizontal-menu-item-margin, 0);
+}
+.elementor-nav-menu--main .elementor-item {
+  display: block;
+  position: relative;
+  padding: 13px 20px;
+  line-height: 20px;
+  text-decoration: none;
+  transition: color 0.4s;
+}
+.e--pointer-underline .elementor-item:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background-color: currentColor;
+  transform: scale(0);
+  transform-origin: center;
+  transition: transform 0.3s;
+}
+.e--pointer-underline .elementor-item:hover:after,
+.e--pointer-underline .elementor-item:focus:after,
+.e--pointer-underline .elementor-item.elementor-item-active:after {
+  transform: scale(1);
+}
+
+/* ---- menu toggle and mobile dropdown */
+.elementor-menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: var(--nav-menu-icon-size, 30px);
+  height: var(--nav-menu-icon-size, 30px);
+  padding: 0;
+  cursor: pointer;
+  background: none;
+  border: 0 solid;
+}
+.elementor-menu-toggle svg {
+  width: var(--nav-menu-icon-size, 30px);
+  height: var(--nav-menu-icon-size, 30px);
+  fill: currentColor;
+}
+.elementor-menu-toggle .elementor-menu-toggle__icon--close,
+.elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--open {
+  display: none;
+}
+.elementor-menu-toggle.elementor-active .elementor-menu-toggle__icon--close {
+  display: block;
+}
+.elementor-nav-menu--dropdown {
+  display: none;
+}
+@media (max-width: 767px) {
+  .elementor-nav-menu--dropdown-mobile .elementor-nav-menu--main {
+    display: none;
+  }
+  .elementor-nav-menu--dropdown-mobile .elementor-menu-toggle {
+    display: flex;
+  }
+  .elementor-nav-menu--dropdown-mobile .elementor-nav-menu--dropdown.sma-replica-open {
+    display: block;
+  }
+  /* "stretch" dropdown: make the header section its containing block so the menu spans the viewport. */
+  .elementor-location-header .elementor-column,
+  .elementor-location-header .elementor-widget-wrap,
+  .elementor-location-header .elementor-widget-nav-menu {
+    position: static;
+  }
+  .elementor-nav-menu--stretch .elementor-nav-menu--dropdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    z-index: 9999;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  }
+  .elementor-nav-menu--dropdown a {
+    display: block;
+    padding: 13px 20px;
+    text-decoration: none;
+  }
+  .elementor-nav-menu__text-align-center .elementor-nav-menu--dropdown .elementor-nav-menu {
+    text-align: center;
+  }
+}
+
+/* ---- sticky header (Pro's sticky effect; the section keeps its white band and shadow) */
+.elementor-location-header .elementor-top-section {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.admin-bar .elementor-location-header .elementor-top-section {
+  top: 32px;
+}
+
+/* ---- remove the theme's list markers from the plugin's event cards and menus */
+.sma-replica .sma ul,
+.sma-replica .sma ol,
+.sma-replica .sma li {
+  list-style: none;
+}
+.sma-replica .sma li::marker {
+  content: none;
+}
+
+/* ---- Pro form widget on the contact page (labels above full-width fields) */
+.elementor-form .elementor-form-fields-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+.elementor-form .elementor-form-fields-wrapper .elementor-field-group {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap; /* Elementor's base CSS wraps; in a column box that puts the field beside its label */
+  align-items: stretch;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 0 10px;
+}
+.elementor-form .elementor-form-fields-wrapper .elementor-field-label {
+  display: block;
+  margin-bottom: 6px;
+}
+.elementor-form .elementor-field-textual {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #8A8084;
+  border-radius: 4px;
+  background: #FFFFFF;
+  color: #000000;
+  font: inherit;
+}
+.elementor-form .elementor-field-textual:focus {
+  outline: 3px solid #271D16;
+  outline-offset: 2px;
+}
+.elementor-form .e-form__buttons .elementor-button {
+  width: 100%;
+  border: 0;
+  cursor: pointer;
+}
+.sma-replica-form-note {
+  margin: 0 10px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: #FFF4DB;
+  color: #7A4A0F;
+  font-size: 14px;
+}
+
+/* ---- placeholders for the live videos (real sessions) and the canvas collage (real children) */
+.elementor-widget-video .elementor-wrapper {
+  position: relative;
+}
+.sma-replica-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  border-radius: 12px;
+  background: #EAE3DF;
+  color: #6B6266;
+  font-family: "DM Sans", system-ui, sans-serif;
+}
+.sma-replica-video__play {
+  width: 0;
+  height: 0;
+  margin-left: 6px;
+  border-left: 28px solid #9D5A18;
+  border-top: 17px solid transparent;
+  border-bottom: 17px solid transparent;
+  opacity: 0.85;
+}
+.sma-replica-video__label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #271D16;
+}
+.sma-replica-video__note {
+  font-size: 13px;
+}
+.sma-replica-portrait {
+  border-radius: 12px;
+  box-shadow: 0 0 24px rgba(0, 0, 0, 0.12);
+}

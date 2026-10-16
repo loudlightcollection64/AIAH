@@ -1,0 +1,21 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "So Many Angels local copy",
+    "author": "AIAH 2026 team",
+    "description": "WordPress with the live site's theme (Solace) and the free Fluent plugins mounted from plugins-cache/, plus the SMA events plugin. Elementor is mounted for its stylesheets only. Paid add-ons are not available locally."
+  },
+  "preferredVersions": {
+    "php": "7.4",
+    "wp": "latest"
+  },
+  "login": false,
+  "steps": [
+    { "step": "setSiteOptions", "options": { "blogname": "So Many Angels (LOCAL)", "timezone_string": "America/New_York", "permalink_structure": "/%postname%/" } },
+    { "step": "activateTheme", "themeFolderName": "solace" },
+    { "step": "activatePlugin", "pluginPath": "fluentform/fluentform.php" },
+    { "step": "activatePlugin", "pluginPath": "fluent-crm/fluent-crm.php" },
+    { "step": "activatePlugin", "pluginPath": "fluent-booking/fluent-booking.php" },
+    { "step": "activatePlugin", "pluginPath": "sma-events/sma-events.php" }
+  ]
+}

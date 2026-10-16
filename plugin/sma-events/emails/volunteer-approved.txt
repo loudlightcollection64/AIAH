@@ -1,0 +1,19 @@
+# volunteer-approved (on approval, previewed first): first_name, role, city, date_label, time_label, arrival_time, location, what_to_bring.
+Subject: You're on the team for {{city}}, {{first_name}}!
+
+Hi {{first_name}}!
+
+Thank you for volunteering! You're confirmed for our {{city}} event, and we're glad to have you.
+
+Your role: {{role}}
+Date: {{date_label}}
+Event time: {{time_label}}
+Please arrive by: {{arrival_time}}
+Location: {{location}}
+Please bring: {{what_to_bring}}
+
+If anything changes on your side, or you have a question before the day, just reply to this email.
+
+See you there!
+Matt
+So Many Angels

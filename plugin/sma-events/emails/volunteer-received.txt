@@ -1,0 +1,17 @@
+# volunteer-received (on application): first_name, role, event_label.
+Subject: Thanks for volunteering, {{first_name}}!
+
+Hi {{first_name}}!
+
+Thank you for wanting to help at a So Many Angels event. It means a lot.
+
+Role: {{role}}
+Event: {{event_label}}
+
+We've got your application. We'll look it over and get back to you by email. Once you're confirmed, we'll send you where to be, when to arrive and what to bring.
+
+If you have a question in the meantime, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels

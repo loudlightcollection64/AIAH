@@ -1,0 +1,12 @@
+# volunteer-declined (draft note on the contact, never sent): first_name, city, date_label.
+Subject: Thank you, {{first_name}}
+
+Hi {{first_name}}!
+
+Thank you so much for offering to volunteer with So Many Angels.
+
+We aren't able to bring you onto the team for {{city}} on {{date_label}}, but we really appreciate you reaching out, and we'd love to keep you in mind for a future event.
+
+Thank you!
+Matt
+So Many Angels

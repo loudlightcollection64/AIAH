@@ -1,0 +1,28 @@
+# family-approved (on approval, with the booking link): guardian_first_name, child_first_name, child_possessive, city, date_label, time_label, location, booking_url, canvas_handover.
+Subject: You're approved! Pick your session time, {{guardian_first_name}}
+
+Hi {{guardian_first_name}}!
+
+Great news: {{child_first_name}} is all set! The next step is to pick your session time here:
+
+{{booking_url}}
+
+Here are the event details:
+City: {{city}}
+Date: {{date_label}}
+Time: {{time_label}}
+Location: {{location}}
+
+Sessions take about 10 minutes, so pick whatever time works best for you.
+
+Please bring {{child_possessive}} costume if they're wearing one.
+
+We'll have volunteers there to help when you arrive. Our goal is simple: have some fun, take some great photos, and let your kid be a kid!
+
+Your canvas: {{canvas_handover}}
+
+If you have any questions, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels

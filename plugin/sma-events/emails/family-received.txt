@@ -1,0 +1,16 @@
+# family-received (on sign-up): guardian_first_name, child_first_name, event_label.
+Subject: We got your sign-up, {{guardian_first_name}}!
+
+Hi {{guardian_first_name}}!
+
+Thank you for signing up {{child_first_name}} for a So Many Angels photo session.
+
+Event: {{event_label}}
+
+We've received your information and will be in touch soon. Once your sign-up is approved, we'll email you a link to pick your session time.
+
+If anything changes or you have a question, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels

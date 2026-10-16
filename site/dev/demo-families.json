@@ -1,0 +1,30 @@
+{
+  "_note": "Fictional demo families and volunteers for the LOCAL site only. Every name is invented, every address is @example.com, and the diagnosis field is always the marker FICTIONAL-TEST (set by demo_families.py, not stored here). Loaded by site/dev/demo_families.py. 'event' is a demo event key from demo-events.json (dates are relative to today; seed.event_slug() gives the slug). 'slot' is the preferred FluentBooking start time (event local time) for families whose target is booked.",
+  "families": [
+    {"key": "pgh-01", "event": "pittsburgh", "target": "awaiting-approval", "guardian_first": "Avery", "guardian_last": "Example", "email": "demo-pgh-01@example.com", "child": "Milo", "age": "6", "costume": "Astronaut", "flash": "no"},
+    {"key": "pgh-02", "event": "pittsburgh", "target": "awaiting-approval", "guardian_first": "Blair", "guardian_last": "Sample", "email": "demo-pgh-02@example.com", "child": "Juniper", "age": "9", "costume": "Dragon knight", "flash": "yes"},
+    {"key": "pgh-03", "event": "pittsburgh", "target": "approved", "guardian_first": "Casey", "guardian_last": "Fictional", "email": "demo-pgh-03@example.com", "child": "Theo", "age": "4", "costume": "Firefighter", "flash": "no"},
+    {"key": "pgh-04", "event": "pittsburgh", "target": "approved", "guardian_first": "Devon", "guardian_last": "Placeholder", "email": "demo-pgh-04@example.com", "child": "Hazel", "age": "11", "costume": "Mermaid", "flash": "no"},
+    {"key": "pgh-05", "event": "pittsburgh", "target": "booked", "slot": "10:20", "guardian_first": "Emery", "guardian_last": "Exampleton", "email": "demo-pgh-05@example.com", "child": "Ezra", "age": "7", "costume": "Superhero", "flash": "no"},
+    {"key": "pgh-06", "event": "pittsburgh", "target": "booked", "slot": "10:40", "guardian_first": "Finley", "guardian_last": "Sampleford", "email": "demo-pgh-06@example.com", "child": "Poppy", "age": "5", "costume": "Fairy", "flash": "yes"},
+    {"key": "pgh-07", "event": "pittsburgh", "target": "needs-follow-up", "guardian_first": "Gray", "guardian_last": "Demo", "email": "demo-pgh-07@example.com", "child": "Arlo", "age": "13", "costume": "Pirate captain", "flash": "no"},
+    {"key": "pgh-08", "event": "pittsburgh", "target": "canceled", "guardian_first": "Harper", "guardian_last": "Fictionwood", "email": "demo-pgh-08@example.com", "child": "Wren", "age": "8", "costume": "Wizard", "flash": "no"},
+
+    {"key": "cin-01", "event": "cincinnati", "target": "awaiting-approval", "guardian_first": "Indigo", "guardian_last": "Placeholt", "email": "demo-cin-01@example.com", "child": "Felix", "age": "10", "costume": "Race car driver", "flash": "no"},
+    {"key": "cin-02", "event": "cincinnati", "target": "approved", "guardian_first": "Jules", "guardian_last": "Exampleby", "email": "demo-cin-02@example.com", "child": "Iris", "age": "6", "costume": "Princess", "flash": "no"},
+    {"key": "cin-03", "event": "cincinnati", "target": "booked", "slot": "13:30", "guardian_first": "Kai", "guardian_last": "Samplewell", "email": "demo-cin-03@example.com", "child": "Otis", "age": "3", "costume": "Dinosaur explorer", "flash": "yes"},
+    {"key": "cin-04", "event": "cincinnati", "target": "needs-follow-up", "guardian_first": "Lane", "guardian_last": "Demoley", "email": "demo-cin-04@example.com", "child": "Luna", "age": "12", "costume": "Space ranger", "flash": "no"},
+
+    {"key": "kc-01", "event": "kansas-city", "target": "awaiting-approval", "guardian_first": "Morgan", "guardian_last": "Fictionelli", "email": "demo-kc-01@example.com", "child": "Jasper", "age": "8", "costume": "Ninja", "flash": "no"},
+    {"key": "kc-02", "event": "kansas-city", "target": "awaiting-approval", "guardian_first": "Noel", "guardian_last": "Examplewood", "email": "demo-kc-02@example.com", "child": "Nova", "age": "15", "costume": "Rock star", "flash": "no"},
+    {"key": "kc-03", "event": "kansas-city", "target": "approved", "guardian_first": "Oakley", "guardian_last": "Sampleton", "email": "demo-kc-03@example.com", "child": "Rowan", "age": "9", "costume": "Knight", "flash": "yes"},
+
+    {"key": "oct-01", "event": "pittsburgh-past", "target": "attended", "guardian_first": "Parker", "guardian_last": "Demoford", "email": "demo-oct-01@example.com", "child": "Ivy", "age": "7", "costume": "Ballerina", "flash": "no"},
+    {"key": "oct-02", "event": "pittsburgh-past", "target": "attended", "guardian_first": "Reese", "guardian_last": "Placeholder-Example", "email": "demo-oct-02@example.com", "child": "Silas", "age": "10", "costume": "Jungle explorer", "flash": "no"}
+  ],
+  "volunteers": [
+    {"key": "vol-01", "event": "pittsburgh", "target": "volunteer-approved", "first": "Quinn", "last": "Example-Volunteer", "email": "demo-vol-01@example.com", "role": "station-photographer", "location": "pittsburgh"},
+    {"key": "vol-02", "event": "cincinnati", "target": "volunteer-applied", "first": "Rory", "last": "Sample-Volunteer", "email": "demo-vol-02@example.com", "role": "check-in-volunteer", "location": "cincinnati"},
+    {"key": "vol-03", "event": "kansas-city", "target": "volunteer-applied", "first": "Sage", "last": "Fictional-Volunteer", "email": "demo-vol-03@example.com", "role": "cosplay-artist", "location": "kansas-city"}
+  ]
+}

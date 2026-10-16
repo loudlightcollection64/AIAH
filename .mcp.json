@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sma-wordpress-local": {
+      "command": "node",
+      "args": ["connector/wordpress/local.mjs"]
+    }
+  }
+}

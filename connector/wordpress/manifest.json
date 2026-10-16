@@ -1,0 +1,79 @@
+{
+  "manifest_version": "0.3",
+  "name": "sma-wordpress",
+  "display_name": "So Many Angels — Website",
+  "version": "0.2.0",
+  "description": "Lets Claude set up So Many Angels events: it reads the website's pages and creates or updates event records. Publishing an event makes the website set up booking, reminders and the event page itself. Claude cannot see or contact any family.",
+  "author": {
+    "name": "AIAH 2026 hackathon team"
+  },
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "SMA_SITE_URL": "${user_config.site_url}",
+        "SMA_WP_USER": "${user_config.username}",
+        "SMA_WP_APP_PASSWORD": "${user_config.app_password}"
+      }
+    }
+  },
+  "tools": [
+    {
+      "name": "check_connection",
+      "description": "Confirm the website is reachable"
+    },
+    {
+      "name": "list_pages",
+      "description": "List published website pages"
+    },
+    {
+      "name": "list_events",
+      "description": "List events and whether booking is set up"
+    },
+    {
+      "name": "get_event",
+      "description": "One event and its set-up status"
+    },
+    {
+      "name": "save_event",
+      "description": "Preview, then create, update or publish an event"
+    }
+  ],
+  "user_config": {
+    "site_url": {
+      "type": "string",
+      "title": "Website address",
+      "description": "For example https://somanyangels.org",
+      "default": "https://somanyangels.org",
+      "required": true
+    },
+    "username": {
+      "type": "string",
+      "title": "WordPress username",
+      "description": "claude-agent: the separate account with the SMA Agent role. Not your own admin account.",
+      "required": true,
+      "default": "claude-agent"
+    },
+    "app_password": {
+      "type": "string",
+      "title": "Application password",
+      "description": "Created under Users → Profile → Application Passwords for that account. You can revoke it there at any time.",
+      "sensitive": true,
+      "required": true
+    }
+  },
+  "compatibility": {
+    "platforms": [
+      "darwin",
+      "win32"
+    ],
+    "runtimes": {
+      "node": ">=18.0.0"
+    }
+  }
+}

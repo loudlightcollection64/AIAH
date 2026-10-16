@@ -1,0 +1,9 @@
+# admin-digest: daily summary to the site admin (includes/digest.php); {{blocks}} holds counts and volunteer first names only.
+Subject: {{subject}}
+Good morning Matt,
+
+{{blocks}}
+
+Open the dashboard: {{dashboard_url}}
+
+Your website sends this note once a day when something needs you. Change the time or turn it off under So Many Angels -> Settings: {{settings_url}}

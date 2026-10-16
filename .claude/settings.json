@@ -1,0 +1,32 @@
+{
+  "enabledMcpjsonServers": ["sma-wordpress-local"],
+  "permissions": {
+    "allow": [
+      "mcp__sma-wordpress-local",
+      "Bash(./demo.sh)",
+      "Bash(./demo.sh:*)",
+      "Bash(./setup.sh)",
+      "Bash(bash install.sh:*)",
+      "Bash(python3 -I site/dev/demo_e2e.py:*)",
+      "Bash(python3 -I site/dev/demo_pages.py:*)",
+      "Bash(python3 -I site/dev/seed.py)",
+      "Bash(python3 -I site/dev/demo_families.py)",
+      "Bash(python3 -I site/dev/snapshot.py:*)",
+      "Bash(python3 -I site/dev/wp.py GET:*)",
+      "Bash(python3 -I tools/update_plugins.py:*)",
+      "Bash(npm test)",
+      "Bash(npm ci:*)",
+      "Bash(node test/smoke.mjs)",
+      "Bash(curl -s -o /dev/null -w:*)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git show:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)"
+    ]
+  }
+}

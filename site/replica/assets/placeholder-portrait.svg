@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 819 1024" width="819" height="1024" role="img" aria-labelledby="t d">
+  <title id="t">Placeholder for the canvas collage</title>
+  <desc id="d">A drawn stand-in for the photo collage shown on the live site; no photos are copied into the local demo.</desc>
+  <rect width="819" height="1024" rx="18" fill="#FAF9F8"/>
+  <rect x="24" y="24" width="771" height="976" rx="12" fill="none" stroke="#EAE3DF" stroke-width="4"/>
+  <g fill="#EAE3DF">
+    <rect x="64" y="64" width="330" height="420" rx="10"/>
+    <rect x="425" y="64" width="330" height="420" rx="10"/>
+    <rect x="64" y="516" width="330" height="420" rx="10"/>
+    <rect x="425" y="516" width="330" height="420" rx="10"/>
+  </g>
+  <g fill="#F5A706" opacity="0.9">
+    <path d="M229 150 l44 90 99 14 -72 70 17 99 -88 -46 -88 46 17 -99 -72 -70 99 -14z"/>
+    <path d="M590 150 l44 90 99 14 -72 70 17 99 -88 -46 -88 46 17 -99 -72 -70 99 -14z"/>
+    <path d="M229 602 l44 90 99 14 -72 70 17 99 -88 -46 -88 46 17 -99 -72 -70 99 -14z"/>
+    <path d="M590 602 l44 90 99 14 -72 70 17 99 -88 -46 -88 46 17 -99 -72 -70 99 -14z"/>
+  </g>
+  <text x="409.5" y="508" text-anchor="middle" font-family="DM Sans, system-ui, sans-serif" font-size="26" font-weight="600" fill="#6B6266">Photo collage shown on somanyangels.org</text>
+</svg>

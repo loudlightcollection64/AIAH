@@ -1,0 +1,5 @@
+test/
+*.mcpb
+# Kit-only launchers (local demo site, Claude Code on the live site); the extension runs server/index.js.
+local.mjs
+live.mjs

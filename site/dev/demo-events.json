@@ -1,0 +1,58 @@
+[
+  {
+    "key": "pittsburgh-past",
+    "days_from_today": -10,
+    "meta": {
+      "city": "Pittsburgh",
+      "venue": "Demo Studio Cranberry",
+      "address": "100 Example Way, Cranberry Township, PA 16066",
+      "start_time": "12:00",
+      "end_time": "14:00",
+      "timezone": "America/New_York",
+      "capacity": 12,
+      "canvas_handover": "Shipped to the family within 60 days"
+    }
+  },
+  {
+    "key": "pittsburgh",
+    "days_from_today": 30,
+    "meta": {
+      "city": "Pittsburgh",
+      "venue": "Demo Studio Cranberry",
+      "address": "100 Example Way, Cranberry Township, PA 16066",
+      "start_time": "10:00",
+      "end_time": "12:00",
+      "timezone": "America/New_York",
+      "capacity": 20,
+      "canvas_handover": "Shipped to the family within 60 days"
+    }
+  },
+  {
+    "key": "cincinnati",
+    "days_from_today": 51,
+    "meta": {
+      "city": "Cincinnati",
+      "venue": "Demo Community Center",
+      "address": "200 Sample Street, Cincinnati, OH 45202",
+      "start_time": "13:00",
+      "end_time": "15:00",
+      "timezone": "America/New_York",
+      "capacity": 10,
+      "canvas_handover": "Presented at a reveal event about 45 days later"
+    }
+  },
+  {
+    "key": "kansas-city",
+    "days_from_today": 93,
+    "meta": {
+      "city": "Kansas City",
+      "venue": "Demo Academy Lee's Summit",
+      "address": "300 Placeholder Road, Lee's Summit, MO 64063",
+      "start_time": "10:00",
+      "end_time": "12:00",
+      "timezone": "America/Chicago",
+      "capacity": 15,
+      "canvas_handover": "Presented at a partner event 45–60 days later"
+    }
+  }
+]

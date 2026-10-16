@@ -1,0 +1,20 @@
+# family-thank-you (after the event, previewed first): guardian_first_name, child_first_name, canvas_handover, story_possessive (story consent only), givebutter_url.
+Subject: Thank you for coming, {{guardian_first_name}}!
+
+Hi {{guardian_first_name}}!
+
+Thank you so much for coming to your photo session with {{child_first_name}}. It was a joy to have you there.
+
+Our photographers and editors are working on your photos now. We'll let you know when they're ready.
+
+Your canvas: {{canvas_handover}}
+
+If you'd like to share a favourite moment or a few words about {{story_possessive}} day, just reply to this email. We'd love to hear it!
+
+If friends or family ever ask how they can help, they can support So Many Angels here: {{givebutter_url}}
+
+If you have any questions, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels

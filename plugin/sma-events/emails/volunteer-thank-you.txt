@@ -1,0 +1,15 @@
+# volunteer-thank-you (after the event, previewed first): first_name, city, date_label.
+Subject: Thank you for helping out, {{first_name}}!
+
+Hi {{first_name}}!
+
+Thank you for volunteering with So Many Angels. We couldn't do this without you.
+It was great to have you with us in {{city}} on {{date_label}}.
+
+What's next: if you took photos or video, please send your files over within about a day if you haven't already, so the editors can get started. Then the canvases get printed and go to the families.
+
+We'd love to have you back. If you have any questions or feedback about the day, just reply to this email.
+
+Thank you!
+Matt
+So Many Angels
