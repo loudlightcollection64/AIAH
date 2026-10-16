@@ -1,183 +1,221 @@
 # So Many Angels: what we built and how to use it
 
-For Matt Meiers, from the AI in Action Hackathon team, October 2026.
+Matt,
 
-## In one paragraph
+This is a write-up of what our hackathon team built for So Many Angels, how it works, and how to
+start using it.
 
-You asked for one simple system to replace your forms, spreadsheets, scheduling tools and manual
-emails. We found you already own almost all of it: WordPress, Fluent Forms Pro, FluentCRM Pro,
-FluentBooking Pro and Google Workspace. They just aren't connected, so **you are the glue**, by
-hand, for every event. We connected them with one WordPress plugin. Publishing an event now sets
-up its sign-up option, booking times, reminder emails and event page by itself. Your own Claude
-has a written knowledge base about So Many Angels and a safe way to work on your site. The
-result runs on your Mac today with made-up families, and goes onto your real site whenever you
-say so.
+## The short version
 
-## What we found
+You asked for one system to replace the forms, spreadsheets, scheduling tools and emails you
+juggle for every event. When we looked at your setup, it turned out you already own nearly
+everything that system needs: WordPress, Fluent Forms Pro, FluentCRM Pro, FluentBooking Pro and
+Google Workspace. The problem is that none of it talks to each other, so you end up doing the
+connecting by hand.
 
-- **Every event is assembled by hand:** a hand-built page, a hand-typed dropdown in the sign-up
-  and volunteer forms, and hand-sent emails. Your live sign-up form and events page still
-  advertise events that have already happened.
-- **The tools you pay for can already do most of the work.** FluentBooking can send each family
-  reminders before their own session. They weren't wired into your process.
-- **A few things on the site need attention,** whatever you decide about the rest:
-  - error messages are switched on for visitors;
-  - PHP is version 7.4, which stopped getting security fixes in 2022, with its speed cache off;
-  - most plugins are behind on updates;
-  - the timezone is "-04:00" instead of "New York", so times shift after November 1;
-  - about 25 GB of the hosting space is unexplained, often old backup files;
-  - three account names are publicly listed.
+So instead of building something new, we wrote a WordPress plugin that connects the tools you
+already pay for. When you publish an event, the site now sets up its sign-up option, booking
+times, reminder emails and event page on its own. We also set up your Claude so it understands
+So Many Angels and can work on your site safely. Everything runs today on a private copy of your
+site with made-up families, and it can go onto your real site whenever you're ready.
 
-  Details are in `workspace/vault/tools/site-health.md`.
+## What we noticed about the current setup
 
-## What we built
+Each event is put together by hand: a page built from scratch, the event typed into the sign-up
+and volunteer forms, and emails sent one at a time. Your sign-up form and events page are still
+showing events that have already happened.
 
-| What you asked for | What it does now |
-|---|---|
-| **Event management** | Fill in an event: city, venue, date, times, number of sessions, how the canvas is delivered. You can do this in WordPress (on your phone too), or ask Claude to draft it for you. When you publish it, the site creates the booking times for that day, turns on the reminders, adds the event to your sign-up and volunteer forms, and shows its public page. Past events drop off by themselves. |
-| **Family registration** | Families sign up through your existing Fluent form, unchanged. Each child is a separate sign-up, even siblings. A second sign-up for the same child and event is flagged as a possible duplicate. A family that's already in your CRM keeps their details; a mismatch is flagged for follow-up. Each family gets a "we've received your information" email. |
-| **Approval** | From the dashboard. You see the exact email before it goes, then one click sends the link to pick a session time. Declines are written as a draft for you to edit and send yourself. If a declined or canceled family had already booked, their booking is cancelled too: the preview tells you first, and FluentBooking sends its cancellation note. |
-| **Changing an event** | Taking a published event back to draft closes booking and pauses reminders for families who already booked. Their bookings stay, and the dashboard warns you. Moving the date or time flags the families booked at the old time for follow-up; nothing is moved or cancelled behind your back. |
-| **Booking and reminders** | Approved families pick a time in FluentBooking. They get a confirmation and reminders 14, 7, 3 and 1 days before **their own session**, in your voice. Only families who booked get reminders, including anyone who books late. |
-| **Thank-yous and follow-ups** | After an event, the dashboard offers thank-you emails for families who attended and volunteers who helped. You preview them, then send. |
-| **Nudges and attendance** | A family waiting for your approval longer than 3 days says so on its row ("Waiting 5 days"), and the events list counts them ("2 waiting over 3 days"). On the day of an event or after it, tick the families who came and mark them all attended in one click; nothing is emailed, and thank-yous still wait for your preview. |
-| **Canvas tracking** | Each attended family's canvas shows where it is: photos edited, sent to print, delivered (shipped or presented), with dates. One click moves it on. Follow-ups → Canvases lists every canvas not delivered yet, oldest event first, and the CSV has the canvas columns. Families get no emails about it. |
-| **Volunteer applications** | Volunteers apply through your form. You approve them per event, and they get an email saying where, when and what to bring. Portfolio and location questions are ready to add to your form when you want them. |
-| **Admin dashboard** | Every event, every family's stage (awaiting approval, approved, booked, attended, needs follow-up, canceled), the dates each booked family's reminders go out, each family's photo and story permissions, and the volunteers. A CSV export opens in Google Sheets. |
-| **Settings** | One screen: which forms and booking calendar to use, session length, reminder days, whether the plugin's events list replaces your `/events/` page or goes on it (with the `[sma_events]` shortcode), and whether editors may see family data. By default only administrators can. |
-| **Daily digest** | A short email from your website each morning (7:00 by default) on days when something needs you: families waiting for approval per event (and how many have waited more than 3 days), events in the next three weeks with sessions booked and volunteers approved, anything that needs a look (a set-up problem, booked families with no reminders waiting), and new volunteer applications. Counts and volunteer first names only, never a child's details; the dashboard link has the rest. Turn it off, change the time or the address on Settings, and use "Send a test digest now" to see today's. Written by the site, not by an AI. |
-| **Site checks** | A list at the bottom of Settings of things to fix on your site, each with one sentence on how: the time zone set as an offset instead of "New York", error messages shown to visitors, an old PHP version, FluentSMTP not set up, your sign-up form's own admin email including the diagnosis, no "Events" link in the menu, how many administrator accounts there are, and whether two-factor login is on. It only reads; it changes nothing. |
+FluentBooking can already send each family reminders before their own session; it just wasn't
+hooked into the rest of the process.
 
-Emails follow your writing style: warm, short, first names, "Thank you!". The event pages use your
-site's colours, fonts and logo.
+We also spotted a few things on the site worth fixing regardless of what you decide about the
+rest: error messages are visible to visitors, PHP is on version 7.4 (no security updates since
+2022), most plugins are behind on updates, the timezone is set as "-04:00" rather than New York
+(so times will be off by an hour after November 1), about 25 GB of hosting space is unaccounted
+for, and your account names can be looked up publicly. There's more detail in
+`workspace/vault/tools/site-health.md`, and a step-by-step fix list in
+`workspace/runbooks/going-live.md`.
 
-We also compared the other routes your brief mentioned (Softr, Replit, Bubble, Lovable, and
-configuring your Fluent plugins with no custom code). See `docs/options.md`.
+## What it does
 
-## How you'd use it day to day
+**Events.** You fill in the city, venue, date, times, number of sessions and how the canvas gets
+delivered, either in WordPress (it works on your phone) or by asking Claude to draft it. When you
+publish, the site creates the booking times for that day, switches on reminders, adds the event to
+your sign-up and volunteer forms, and puts up the event page. Past events disappear on their own.
 
-- **Without AI:** WordPress → Events → Add New, fill in the details, publish. Approve families on
-  the So Many Angels dashboard.
-- **With Claude:** say *"New event: Pittsburgh, November 14, 10 to 12, at the Cranberry studio,
-  20 sessions."* Claude drafts it, shows you, and publishes it when you say yes. It can also
-  write announcements, partner emails and posts in your voice for you to send.
+**Sign-ups.** Families use your existing Fluent sign-up form, unchanged. Each child is a separate
+sign-up, siblings included. If the same child signs up twice for the same event, it's flagged as a
+possible duplicate. If someone already in your CRM signs up with different details, their record
+isn't overwritten; it's flagged so you can check. Every family gets a "we've received your
+information" email.
 
-Either way, the routine sending is done by your website, not by an AI.
+**Approvals.** You approve families from the dashboard. Before anything goes out you see the exact
+email, then one click sends them the link to pick a time. Declines are written up as a draft for
+you to edit and send yourself. If you decline a family who has already booked, their booking is
+cancelled too; the preview tells you that first, and FluentBooking sends them its cancellation
+note.
+
+**Booking and reminders.** Approved families pick their own time in FluentBooking. They get a
+confirmation, then reminders 14, 7, 3 and 1 days before their session, written the way you write.
+Only families who actually booked get reminders. The dashboard shows the dates each family's
+reminders will go out.
+
+**Changing an event.** If you take an event back to draft, booking closes and reminders pause for
+anyone already booked; their bookings stay put and the dashboard warns you. If you change the date
+or time, the families booked at the old time are flagged for follow-up. Nothing gets moved or
+cancelled without you knowing.
+
+**After the event.** Tick the families who came and mark them all attended in one go. The dashboard
+then offers thank-you emails for families and volunteers, which you preview before sending. Each
+family's canvas can be tracked from photos edited, to sent to print, to delivered, and a
+Follow-ups list shows every canvas still outstanding.
+
+**Volunteers.** Volunteers apply through your form. You approve them per event, and they get an
+email with where to be, when, and what to bring. Portfolio and location questions are ready to add
+to your form whenever you want them.
+
+**The dashboard.** One place to see every event, every family's stage (awaiting approval, approved,
+booked, attended, needs follow-up, canceled), their photo and story permissions, and your
+volunteers. Families who have waited more than a few days for approval are flagged. Everything
+exports to a CSV that opens in Google Sheets.
+
+**A daily email.** On mornings when something needs your attention, the site sends you a short
+summary: who's waiting for approval, what's coming up in the next three weeks, anything that needs
+a look, and new volunteer applications. It only contains counts and volunteer first names, never a
+child's details. You can change the time, turn it off, or send yourself a test from Settings.
+
+**Settings and site checks.** One screen covers which forms and calendar to use, session length,
+reminder days, how events show on your `/events/` page, and whether editors can see family data
+(by default only administrators can). At the bottom is a short checklist of things to fix on the
+site, each with a line on how.
+
+The emails are written in your style: warm, short, first names, "Thank you!". The event pages use
+your site's colours, fonts and logo.
+
+We also looked at the other routes your brief mentioned (Softr, Replit, Bubble, Lovable, and
+using your Fluent plugins on their own). That comparison is in `docs/options.md`.
+
+## Day to day
+
+Without Claude, you'd go to WordPress → Events → Add New, fill in the details and publish, then
+approve families on the So Many Angels dashboard.
+
+With Claude, you can just say something like *"New event: Pittsburgh, November 14, 10 to 12, at the
+Cranberry studio, 20 sessions."* Claude drafts it, shows you, and publishes when you say yes. It can
+also draft announcements, partner emails and posts for you to send.
+
+Either way, the routine emails are sent by your website, not by an AI.
 
 ## Keeping families safe
 
-- **Claude can't see families at all.** Its WordPress account can manage event records and
-  nothing else. No forms, contacts, bookings or emails, so even a leaked password wouldn't
-  expose anyone. The connector it uses enforces the same limit. Automated tests check both.
-- **Your plugins' built-in AI connections are a risk.** FluentCRM's can list, read, delete and
-  email every contact. We don't use them.
-- **The diagnosis never leaves the form entry.** It's kept out of the CRM, emails, the dashboard,
-  the CSV and logs.
-- **Nothing reaches a family without you seeing it first,** except the automatic "we've received
-  your information" note, the booking confirmation and the reminders for a session they booked.
-- **The website's set-up details are locked.** The booking page and booking session behind each
-  event can only be set by the website itself, not by Claude or anyone editing an event, so
-  publishing can never be pointed at another page.
-- **Everything we built and tested used made-up families.**
+Claude can't see families at all. Its WordPress account can only manage event records: no forms,
+contacts, bookings or emails, so even if its password leaked nobody's information would be exposed.
+The connector Claude uses enforces the same limit, and there are automated tests for both.
 
-## Try it on your Mac
+FluentCRM's own built-in AI connection can list, read, delete and email every contact. We don't use
+it, and we'd recommend keeping it switched off.
 
-You'll need Claude Code (in your Claude plan; if it isn't available, your seat type may need
-changing) and about 30 minutes the first time.
+A child's diagnosis never leaves the form entry. It stays out of the CRM, emails, the dashboard,
+exports and logs.
 
-1. With the kit's zip in Downloads, paste this line into Terminal:
+Nothing goes to a family without you seeing it first, apart from the automatic "we've received your
+information" note, the booking confirmation, and reminders for a session they booked themselves.
+
+The booking page and booking session behind each event can only be set by the website itself, so
+nobody editing an event can point it somewhere else.
+
+Everything we built and tested used made-up families.
+
+## Trying it on your Mac
+
+You'll need Claude Code (part of your Claude plan; if it doesn't show up, your seat type may need
+changing) and about half an hour the first time.
+
+1. Put the kit's zip in your Downloads folder, open Terminal and paste:
    `cd ~/Downloads && (unzip -oq so-many-angels-kit.zip 2>/dev/null; bash so-many-angels-kit/install.sh)`
-   It asks where to keep the kit, installs anything your Mac is missing (including Claude Code),
-   and opens Claude Code in the kit.
-2. Claude runs `/demo`, which starts a private copy of your website on your Mac with fictional
-   families. The first time, loading the fictional data takes 15–20 minutes; the copy is kept,
-   so later, when you open the kit folder in Claude Code and type `/demo` yourself, it starts in
-   two or three minutes. Ask for "a reset" to put the demo data back as it started. After 3
-   days, or when the plugin changes, it loads fresh data again by itself.
-3. Open the links it gives you: the events page (what families see), the dashboard (what you
-   see) and the mail log (every email the site "sent"). Log in as admin / password.
-4. Ask Claude: *"New event: Columbus, December 12, 10 to 12, Demo Hall, 12 sessions."*
+   It asks where you want to keep the kit, installs anything your Mac is missing (including Claude
+   Code), and opens Claude Code in the kit.
+2. Claude runs `/demo`, which starts a private copy of your website with made-up families. The
+   first time, loading the sample data takes 15–20 minutes. After that the copy is kept, so next
+   time it starts in two or three minutes. Ask Claude for "a reset" to put the sample data back to
+   how it started.
+3. Open the links it gives you: the events page (what families see), the dashboard (what you see)
+   and the mail log (every email the site "sent"). Log in as admin / password.
+4. Try asking Claude: *"New event: Columbus, December 12, 10 to 12, Demo Hall, 12 sessions."*
 
-Nothing in the demo touches somanyangels.org, and no real email is sent. The private copy is
-slower than your real site: each page takes several seconds there, and about a second on your
-hosting.
+Nothing in the demo touches somanyangels.org, and no real emails go out. The private copy is slower
+than your real site, a few seconds per page rather than about one.
 
-## Building with Claude Code
+## Building more with Claude Code
 
-The kit is ready for you to keep building. Claude reads `CLAUDE.md` in the folder, which explains
-the system, the rules (no real family data, never the diagnosis, the live site only changes when
-you say) and how to test. You don't need to read code. Describe what you want, look at the result
-on the private copy, and say yes or no.
+The kit is set up for you to keep building. Claude reads `CLAUDE.md` in the folder, which explains
+how everything fits together, the ground rules (no real family data, never the diagnosis, nothing
+changes on the live site until you say so) and how to test. You don't need to read any code:
+describe what you want, look at the result on the private copy, and say yes or no.
 
-- `/test` checks the core of what you do (Claude publishes an event, a family signs up, you
-  approve, they book) in about 10 minutes on the private copy. `/test full` runs all 220-plus
-  checks in about 25 minutes; start it and carry on with something else.
+- `/test` checks the core flow (an event is published, a family signs up, you approve, they book)
+  in about 10 minutes. `/test full` runs every check, over 220 of them, in about half an hour.
 - `/new-event` sets up an event with Claude.
-- `/ship-plugin` walks you through putting the plugin on your real site, with a backup first.
+- `/ship-plugin` walks you through putting the plugin on your real site, backup first.
+- `/update-plugins` keeps the private copy on the same plugin versions as your live site.
 
 Every change is saved in the folder's history, so anything can be undone.
 
-## Going live, when you're ready
+## Going live
 
-The full step-by-step is `workspace/runbooks/going-live.md`; Claude can walk you through it. In short:
+When you're ready, `workspace/runbooks/going-live.md` has the full steps, and Claude can walk you
+through them. The outline:
 
-1. **Back up the site in IONOS.**
-2. **Install the plugin** (`/ship-plugin` walks you through it) and fill in So Many Angels →
-   Settings. Work down the **Site checks** list at the bottom of that page (time zone,
-   error messages, FluentSMTP, the sign-up form's admin email, two-factor login), then click
-   **Send a test digest now** and check it arrives.
-3. **Check your sign-up form's own settings:** the admin notification email and any CRM feed must
-   not include the diagnosis.
-4. **Create Claude's account,** `claude-agent`, with the "SMA Agent" role and nothing else, plus
-   an application password. Connect Claude with `sma-wordpress.mcpb`.
-5. **Add "Events" to your site menu** (Appearance → Menus, or your Elementor header), pointing at
-   `/events/`. Your menu has no link to events today, so families only find one through a
-   home-page button. The demo copy shows it after "Home".
-6. **Run one fictional event and sign-up end to end,** then delete them.
+1. Back up the site in IONOS.
+2. Fix the basics: timezone, two-factor login, hide error messages, and check emails actually
+   arrive.
+3. Install the plugin and fill in So Many Angels → Settings, working through the site checks at
+   the bottom of that page.
+4. Check your sign-up form's own settings, so its admin email and any CRM feed don't include the
+   diagnosis.
+5. Create Claude's account, `claude-agent`, with the "SMA Agent" role and nothing else, and connect
+   it with `sma-wordpress.mcpb`.
+6. Add "Events" to your site menu, since there's currently no link to it.
+7. Run one made-up event and sign-up from start to finish, then delete them.
 
 We tested everything on your exact plugin versions (Fluent Forms 6.2.5, FluentCRM 3.1.8,
-FluentBooking 2.2.0). We also tested on copies of your real sign-up and volunteer forms, field
-for field, read from your public pages. Your "Individual Session — Contact Us" and "No specific
-date" options stay; only the hand-typed dated events are replaced. If you delete a field from
-either form and add it again, its internal name changes, so ask Claude to re-check.
+FluentBooking 2.2.0) and on copies of your real sign-up and volunteer forms, field for field. Your
+"Individual Session — Contact Us" and "No specific date" options stay; only the hand-typed dated
+events get replaced. One thing to know: if you delete a field from either form and add it back,
+its internal name changes, so ask Claude to re-check afterwards.
 
-## What it costs
+## Cost
 
-Nothing new. You already have Claude (Team plan) and every plugin we used. Node.js and Python are
-free.
+Nothing new. You already have Claude (Team plan) and every plugin we used, and Node.js and Python
+are free.
 
-## Limits and what's next
+## What's not done yet
 
-- **Google Sheets and Airtable.** Exports are CSV files you open in Sheets. Air WP Sync (Airtable)
-  is active on your site, but we didn't connect Airtable; tell us what it holds today.
-- **Google Calendar.** Claude's Google connectors work on your Team plan once you switch them on
-  as an owner.
-- **Checked on a copy, not yet live:** the event pages were checked inside a copy of your site's
-  theme and header, at desktop and phone width; check them once more on the live site.
-- **Data retention.** Sign-ups, including the diagnosis, stay in Fluent Forms as they do today.
-  `workspace/vault/org/data-retention.md` sets out the choices for you to decide.
-- **Your wish list beyond the hackathon:** photo editing, volunteer training,
-  donor management and affiliate photographers. Each can be built the same way.
+- **Airtable.** Air WP Sync is active on your site, but we didn't connect Airtable. Let us know what
+  it holds and it can be added.
+- **Google Calendar.** Claude's Google connectors work on your Team plan once you switch them on as
+  the owner.
+- **The live site.** We checked the event pages on a copy of your site's theme, on desktop and
+  phone, but they should be checked once more on the real site.
+- **Data retention.** Sign-ups, including the diagnosis, stay in Fluent Forms as they do now.
+  `workspace/vault/org/data-retention.md` lays out the options for you to choose from.
+- **The rest of your wish list:** photo editing, volunteer training, donor management and
+  affiliate photographers. Each can be built the same way.
 
 ## How it was built
 
-Built in three rounds over three days:
-1. A coordinating AI agent and a team of builders wrote the first version in about two hours.
-2. Four independent AI reviewers then attacked it: one as you, one as a security tester, one as
-   a code reviewer, one as an architect.
+We built this over three days using AI agents. A coordinating agent and a team of builders wrote
+the first working version in about two hours. Then four separate AI reviewers went through it
+looking for problems, one each from your point of view, a security tester's, a code reviewer's and
+an architect's. They found real issues, including a consent bug that only showed up on your
+version of FluentCRM, reminders that would never have reached anyone, and permissions that a leaked
+password could have abused. All of those were fixed and are now covered by tests. A fresh reviewer
+then checked the fixes and caught a couple more, which were fixed too.
 
-They found real problems, all fixed with tests:
-- a consent bug that only appears on your FluentCRM version;
-- reminders that would have reached nobody;
-- permissions a leaked password could abuse.
+A third round added the copy of your site, the faster demo, quicker tests, the daily email, the
+site checks, approval nudges, bulk attendance and canvas tracking.
 
-A fresh reviewer then checked the fixes, and its findings were fixed too:
-- reminders still going to cancelled bookings;
-- a way to point an event at the wrong page.
-
-A third round added the copy of your site, the saved demo, faster tests, the daily digest, site
-checks, nudges, bulk attendance and canvas tracking.
-
-The automated test runs the whole flow on your exact plugin versions and forms: over 220
-checks, from a fictional family signing up to their booking, reminders and cancellation, plus a
-check that Claude's account is refused on every route that holds family data. The full record is in `docs/build-log.md` and `docs/reviews/`.
+The automated tests run the whole flow on your exact plugin versions and forms, from a made-up
+family signing up through to their booking, reminders and cancellation, and confirm that Claude's
+account is turned away from everything that holds family data. The full record is in
+`docs/build-log.md` and `docs/reviews/`.
